@@ -1,0 +1,57 @@
+.bg-color{
+  background-color:rgb(244 51 151);
+ 
+  
+}
+.btn-color{
+  background-color:rgb(244 51 151);
+}
+.text-color{
+  color: rgb(244 51 151);
+}
+.nav-color{
+  background-color: rgb(253 237 235);
+}
+.bg-image{
+  background:url('https://www.stylist.co.uk/images/app/uploads/2020/04/15204608/sl_200416_fashion_v1-1680x880.png?w=1680&h=880&fit=max&auto=format%2Ccompress');
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.product-card{
+  margin-left: 62px;
+  height: 360px;
+}
+.product-heading{
+  margin-top: 20px;
+}
+.text{
+  color:rgb(158, 154, 154);
+}
+.error{
+  color: red;
+}
+.ad-product{
+  width: 100vh;
+  
+}
+.btn-width
+{
+  width: 20vh;
+}
+.text{
+  color: black;
+  font-weight: bolder;
+}
+.des{
+  font-size:x-small;
+}
+.img-cat{
+width: 100px;
+  height: 98px;
+}
+.btn-clr{
+  background-color:rgb(255 171 199);
+  
+}

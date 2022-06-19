@@ -1,0 +1,74 @@
+<section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav mx-5 me-auto">
+                    {{#each category}}
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="/find-subcat/{{this._id}}">{{this.categoryname}}</a>
+                    </li>
+
+                    {{/each}}
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <form class="d-flex" action="/admin/search" method="post">
+                        <input class="form-control me-2" type="text" placeholder="Search" name="search_name" aria-label="Search">
+                        <button class="btn" type="submit">Search</button>
+                    </form>
+                    {{!-- <div class="input-group mx-4">
+                        <form action="/search" method="post">
+                            <input type="search" class="form-control rounded" placeholder="Search" >
+                            <button type="submit" class="btn btn-color text-white">search</button>
+                        </form>
+                    </div> --}}
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <section>
+
+        <div class="container bg-image mt-3">
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row ">
+            {{#each userproducts}}
+
+            <div class="col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center">
+                <div class="card mt-5" style="width: 14rem; height:25rem">
+                    <div class="container mt-2">
+                        <a href="/product-details/{{this._id}}"><img src="/images/{{this.allImages.[0].maini}}"
+                                class="card-img-top " height="200" alt="..."></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text">{{this.brandnames.brandname}}</h5>
+                        <p class="card-text">Rs: {{this.price}}</p>
+                        <div style="width: 12rem; height:3rem;">
+                            <p class=" card-text des">{{this.description}}</p>
+                        </div>
+                        <a href="/wishlist/{{this._id}}"><i class='bx bxs-bookmark-heart fs-4'></i></a>
+
+                        {{!-- <a href="/add-tocart/{{this._id}}" class="btn btn-color text-white">Add to cart</a> --}}
+                        {{!-- <button onclick="addToCart('{{this._id}}')" class="btn btn-color text-white">Add to
+                            cart</button> --}}
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            {{/each}}
+
+        </div>
+    </div>
+</section>

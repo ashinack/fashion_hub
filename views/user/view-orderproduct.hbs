@@ -1,0 +1,45 @@
+</section>
+
+<div class="container">
+    {{!-- {{orderproduct.quantity}}
+    {{orderproduct.products}}
+    {{orderproduct.size}} --}}
+    <div class="row ">
+        {{#each orderproduct}}
+        {{#each this.productdt}}
+       
+
+        <div class="col-md-3 d-flex justify-content-center">
+            <div class="card mt-5" style="width: 14rem; height:25rem">
+                <div class="container mt-2">
+                    {{!-- {{this.products}} --}}
+                    <a href="#"><img src="/images/{{this.allImages.[0].maini}}"
+                            class="card-img-top " height="200" alt="..."></a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text">{{this.brandnames.brandname}}</h5>
+                    <p class="card-text">Rs: {{this.price}}</p>
+                    {{!-- <p class="card-text">size: {{this.size}}</p> --}}
+                    <div style="width: 12rem; height:3rem;">
+                        <p class=" card-text des">{{this.description}}</p>
+                    </div>
+                    {{!-- <a href="/wishlist/{{this._id}}"><i class='bx bxs-bookmark-heart fs-4'></i></a> --}}
+
+                    {{!-- <a href="/add-tocart/{{this._id}}" class="btn btn-color text-white">Add to cart</a> --}}
+                    {{!-- <button onclick="addToCart('{{this._id}}')" class="btn btn-color text-white">Add to
+                        cart</button> --}}
+
+
+                </div>
+            </div>
+        </div>
+
+        {{/each}}
+        {{/each}}
+
+        
+
+
+    </div>
+</div>
+</section>

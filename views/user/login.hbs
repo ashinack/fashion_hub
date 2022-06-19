@@ -1,0 +1,81 @@
+<div class="container">
+    <!-- Section: Design Block -->
+    <section class="text-center mt-5">
+        <!-- Background image -->
+        <div class="p-5 bg-image" style="
+        background-image: url('https://images.meesho.com/images/marketing/1648820929975.jpeg');
+        height: 300px;
+        "></div>
+        <!-- Background image -->
+
+        <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.5);
+        backdrop-filter: blur(30px);
+        ">
+            <div class="card-body py-5 px-md-5">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        {{#if blockerr}}
+                        <p class="error">{{blockerr}}</p>
+                        {{/if}}
+                        <h2 class="fw-bold mb-5">Login</h2>
+                        <form action="/login" method="post" name="form">
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form3Example3" class="form-control" name="email" />
+                                <label class=" form-label" for="form3Example3">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form3Example4" class="form-control" name="password" />
+                                <label class="form-label" for="form3Example4">Password</label>
+                            </div>
+
+                            {{#if loginErr}}
+                            <p class="error">{{loginErr}}</p>
+                            {{/if}}
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-color btn-block mb-4">
+                                Submit
+                            </button>
+
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                                <a href="/signup" style="text-decoration:none">
+                                    <p class="text-color">or sign up with</p>
+                                </a>
+                                <a href="/resetpassword-email" style="text-decoration:none">
+                                    <p class="text-color">forget password ??</p>
+                                </a>
+
+                                <button type=" button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-google"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section: Design Block -->
+</div>

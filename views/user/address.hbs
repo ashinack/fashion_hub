@@ -1,0 +1,168 @@
+<section>
+    <div class="container">
+        <div class="row">
+            {{!-- <div class="col lg-6">
+                <div class="card mt-5" style="width: 14rem; height:18rem">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Address</h5>
+                        <hr>
+                        <h6 class="card-text">{{user.name}}</h6>
+                        <h6 class="card-text">{{user.address}}</h6>
+                        <h6 class="card-text">{{user.Place}}</h6> --}}
+                        {{!-- <h6 class="card-text">{{user.state}}</h6>
+                        <h6 class="card-text">{{user.pincode}}</h6>
+                        <h6 class="card-text">{{user.number}}</h6>
+                        <hr>
+
+                        <a href="/place-order/{{user._id}}"><button type="button"
+                                class="btn btn-color text-white btn-sm btn-block">
+                                Deliver to this Address
+                            </button></a>
+                    </div>
+
+                </div>
+            </div> --}}
+
+
+            {{#each getaddress}}
+            {{#each this.Address}}
+            <div class="col lg-4">
+                <div class="card mt-5" style="width: 14rem; height:18rem">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Address</h5>
+                        <hr>
+                        <h6 class="card-text">{{this.name}}</h6>
+                        <h6 class="card-text">{{this.address}}</h6>
+                        <h6 class="card-text">{{this.Place}}</h6>
+                        <hr>
+                        <a href="/place-order/{{this._id}}"><button type="button"
+                                class="btn btn-color text-white btn-sm btn-block">
+                                Deliver to this Address
+                            </button></a>
+                        {{!-- <p class="card-text">{{this.pincode}}</p>
+                        <p class="card-text">{{this.mobile_no}}</p> --}}
+
+                    </div>
+
+                </div>
+            </div>
+            {{/each}}
+            {{/each}}
+
+
+        </div>
+        <form  action="/address" method="post">
+
+
+            <div class="row">
+
+
+                <div class="col-md-8 mb-4 mt-5">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">Biling details</h5>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form7Example4" class="form-control" />
+                                <label class="form-label" for="form7Example4">Name</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="address" id="form7Example4" class="form-control" />
+                                <label class="form-label" for="form7Example4">Address</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="place" id="form7Example4" class="form-control" />
+                                <label class="form-label" for="form7Example4">Place</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="state" id="form7Example4" class="form-control" />
+                                <label class="form-label" for="form7Example4">State</label>
+                            </div>
+
+
+
+                            <!-- Text input -->
+                            {{!-- <div class="form-outline mb-4">
+                                <input type="text" name="address" id="form7Example4" class="form-control" />
+                                <label class="form-label" for="form7Example4">Address</label>
+                            </div> --}}
+                            <div class="form-outline mb-4">
+                                <input type="text" name="pincode" id="form7Example4" class="form-control" />
+                                <label class="form-label" for="form7Example4">Pincode</label>
+                            </div>
+
+                            {{!--
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" name="email" id="form7Example5" class="form-control" />
+                                <label class="form-label" for="form7Example5">Email</label>
+                            </div> --}}
+
+                            <!-- Number input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" name="phone" id="form7Example6" class="form-control" />
+                                <label class="form-label" for="form7Example6">Mobile</label>
+                                <input type="text" name="userId" value="{{user._id}}" hidden>
+                            </div>
+
+
+                            {{!--
+                            --}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 mt-5">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">Your Total &nbsp; &nbsp; &#x20b9 {{totalam.total}}.00</h5>
+                        </div>
+                        <div class="card-body">
+                            {{!-- < class="list-group list-group-flush"> --}}
+                                {{!-- <div class="form-check pt-3">
+                                    <input class="form-check-input" type="radio" value="COD" name="payment-method"
+                                        id="flexRadioDefault2" />
+                                    <label class="form-check-label" for="flexRadioDefault1">Cash On Delivery</label>
+                                </div> --}}
+
+                                <!-- Default checked radio -->
+                                {{!-- <div class="form-check pt-3">
+                                    <input class="form-check-input" type="radio" value="online payment"
+                                        name="payment-method" id="flexRadioDefault2" checked />
+                                    <label class="form-check-label" for="flexRadioDefault2">Online Payment</label>
+                                </div>
+                                <br>
+                                <hr> --}}
+
+
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                    <div>
+                                        <strong>Total amount</strong>
+                                        {{!-- <strong>
+                                            <p class="mb-0">(including VAT)</p>
+                                        </strong> --}}
+                                    </div>
+                                    <span><strong>&#x20b9 {{totalam.total}}.00</strong></span>
+                                </li>
+                                </ul>
+                                <hr>
+                                <button style="float:right ;" type="submit"
+                                    class="btn btn-color text-white btn-lg btn-block">
+                                    Add Address
+                                </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+

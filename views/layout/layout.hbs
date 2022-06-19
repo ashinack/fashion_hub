@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+    {{!-- bootstrap css --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/productdetails.css' />
+    <link rel='stylesheet' href='/stylesheets/checkout.css' />
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="/stylesheets/order.css">
+    <link rel="stylesheet" href="/public/stylesheets/order-confirm.css">
+    
+    
+   
+  {{!-- ajax cdn --}}
+  {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.js"
+    integrity="sha512-4WpSQe8XU6Djt8IPJMGD9Xx9KuYsVCEeitZfMhPi8xdYlVA5hzRitm0Nt1g2AZFS136s29Nq4E4NVvouVAVrBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    
+
+    {{!-- jquery validator --}}
+    
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+      integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+      <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+      <script src="/javascripts/validation.js"></script>
+      <script src="/javascripts/radio.js"></script>
+      
+      
+     
+        
+    {{!-- template cdn --}}
+    
+    {{!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
+    
+    
+       
+</head>
+
+<body>
+    {{#if admin}}
+    {{>admin-header}}
+    {{else}}
+    {{>user-header}}
+    {{/if}}
+
+    {{{body}}}
+   {{#if admin}}
+   {{else}} 
+  {{>footer}}
+  {{/if}}
+    
+    
+   
+   
+  
+    {{!-- <script src="javascripts/script.js"></script> --}}
+
+  
+
+
+    {{!-- bootstrap js--}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+ 
+ 
+ 
+
+
+       
+
+
+
+
+
+
+{{!-- <script src="javascripts/productdetails.js"></script> --}}
+
+</body>
+
+</html>

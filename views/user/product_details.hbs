@@ -1,0 +1,108 @@
+<div class="container mt-5 mb-5">
+    <form action="/add-tocart/{{data._id}}" method="post" id="radioform">
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-md-6 border-end">
+                    <div class="d-flex flex-column justify-content-center">
+                        <div class="main_image"> <img src="/images/{{data.allImages.[0].maini}}" id="main_product_image"
+                                width="250"> </div>
+                        <div class="thumbnail_images">
+                            <ul id="thumbnail">
+                                <li><img onclick="changeImage(this)" src="/images/{{data.allImages.[0].maini}}"
+                                        width="70"></li>
+                                <li><img onclick="changeImage(this)" src="/images/{{data.allImages.[0].nexti}}"
+                                        width="70"></li>
+                                {{!-- <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg"
+                                        width="70"></li>
+                                <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70">
+                                </li> --}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 right-side">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3>{{data.brandnames.brandname}}</h3> <span class="heart"><i
+                                    class='bx bx-heart'></i></span>
+                        </div>
+                        <div class="mt-2 pr-3 content">
+                            <p>{{data.description}}</p>
+                        </div>
+                        <h3>Rs: {{data.price}}</h3>
+                        <div class="ratings d-flex flex-row align-items-center">
+                            <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i
+                                    class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i>
+                            </div>
+                            <span>441 reviews</span>
+                        </div>
+                        <div class="mt-5">
+                            <div>
+                                {{!-- <ul>
+                                    <li>M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                    <li>XXL</li>
+                                    <li id="marker-5">XXL</li>
+                                </ul> --}}
+                                {{!-- <div class="dropdown mt-4"> --}}
+                                    {{!-- <a class="btn  dropdown-toggle text-dark " href="#" role="button"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
+                                        name="size">
+                                        Select Size
+                                    </a> --}}
+
+                                    {{!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">XXL</a></li>
+                                        <li><a class="dropdown-item" href="#">XL</a></li>
+                                        <li><a class="dropdown-item" href="#">L</a></li>
+                                        <li><a class="dropdown-item" href="#">M</a></li>
+                                        <li><a class="dropdown-item" href="#">S</a></li>
+                                    </ul> --}}
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="size" id="size" value="s">
+                                        <label class="form-check-label" for="inlineRadio1">S</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="size" id="size" value="m">
+                                        <label class="form-check-label" for="inlineRadio2">M</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="size" id="size" value="l">
+                                        <label class="form-check-label" for="inlineRadio2">L</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="size" id="size" value="xl">
+                                        <label class="form-check-label" for="inlineRadio2">XL</label>
+                                    </div>
+
+
+                                    {{!--
+                                </div> --}}
+                            </div>
+
+
+                        </div>
+                        <div class="buttons d-flex flex-row mt-5 gap-3">
+
+                            <button type="submit" class="btn btn-color text-white">Add to Cart</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </fonrm>
+</div>
+
+<script>
+    function changeImage(element) {
+
+        var main_prodcut_image = document.getElementById('main_product_image');
+        main_prodcut_image.src = element.src;
+
+
+    }
+</script>

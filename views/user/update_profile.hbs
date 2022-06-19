@@ -1,0 +1,45 @@
+<div class="container-fluid align-item-center mt-5">
+    <div class="card mx-auto" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title text-color text-center">Update Profile</h5>
+
+            <form action="/update-profile/{{UserDetails._id}}" method="post" name="form1">
+                <div class=" mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name</label>
+                    <input type="text" class="form-control" aria-describedby="emailHelp" name="name"
+                        value="{{UserDetails.name}}">
+
+                </div>
+                <div class=" mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" name="email"
+                        value="{{UserDetails.email}}">
+
+                </div>
+                {{!-- <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" value="{{user.password}}">
+                </div> --}}
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" value="{{UserDetails.address}}">
+                </div>
+                
+               
+                
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Phone number:</label>
+                    <input type="text" class="form-control" name="number" value="{{UserDetails.number}}">
+                </div>
+                <div class=" d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-color text-white" type="submit">Update</button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+    </div>
+</div>

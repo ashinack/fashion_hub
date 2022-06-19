@@ -1,0 +1,49 @@
+
+
+<div class="card mx-auto mt-5" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><h3 class="text-center">Add SubCategory</h3></h5>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 ad-product mx-auto">
+                    
+        
+                    <form action="/admin/subcategory-add" method="post" name="" id="">
+                        <div class=" mb-3">
+                            <label for="exampleInputEmail1" class="form-label">SubCategory Name</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" name="subcategoryname">
+        
+                        </div>
+                        {{!-- <div class=" mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" name="categoryname">
+        
+                        </div> --}}
+        
+                        <div class=" mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Category Name</label>
+                            <select name="categoryname" class="form-control">
+                                {{#each result}}
+                                <option value="{{this.categoryname}}">{{this.categoryname}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <p style="color:red;">{{err}}</p>
+
+                        <p style="color:rgb(0, 255, 72);">{{data}}</p>
+        
+                        <div class=" d-grid gap-2 col-6 btn mx-auto">
+        
+                            <button class="btn btn-color text-white btn-sm" type="submit">Add</button>
+        
+                        </div>
+        
+        
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+        
+    </div>
+</div>

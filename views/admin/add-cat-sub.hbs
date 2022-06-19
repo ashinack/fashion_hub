@@ -1,0 +1,49 @@
+<div class="card mx-auto mt-5" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center">Add Category</h5>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 ad-product mx-auto">
+
+                    <form action="/admin/add-category" method="post" name="" id="">
+
+                        <div class=" mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Brandname</label>
+                            <select name="categoryname" class="form-control">
+                                <option value="" selected>Select category</option>
+                                {{#each findsub}}
+                        
+                               <option value="{{this.subcategoryname}}">{{this.subcategoryname}}</option>
+                               
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Dropdown button
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                {{#each catsub}}
+                                <li><a class="dropdown-item" href="/admin/find-sub/{{this._id}}">{{this.categoryname}}</a></li>
+                               
+                                {{/each}}
+                            </ul>
+                        </div>
+
+                       
+                        <div class=" d-grid gap-2 col-6 btn mx-auto">
+
+                            <button class="btn btn-color text-white btn-sm" type="submit">Add</button>
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

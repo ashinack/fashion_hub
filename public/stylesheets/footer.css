@@ -1,0 +1,8 @@
+.hm-gradient {
+    background-image: linear-gradient(to top, #fff2f2 0%, #e8eff9 99%, #e3eeff 100%);
+    
+}
+
+.darken-grey-text {
+    color: #2E2E2E;
+}

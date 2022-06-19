@@ -1,0 +1,151 @@
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <div class="col-lg-8">
+                            <div class="p-5">
+                                <div class="d-flex justify-content-between align-items-center mb-5">
+                                    <h1 class="fw-bold mb-0 text-color">Shopping Cart</h1>
+
+                                </div>
+                                {{#each cartProducts}}
+
+                                {{#each this.cartItems}}
+                                <hr class="my-4">
+
+                                <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src="/images/{{this.products.allImages.[0].maini}}"
+                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-3">
+
+                                        <h6 class="text-black mb-0">{{this.products.brandnames.brandname}}</h6>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                        <button class="btn btn-link px-2"
+                                            onclick="changeQuantity('{{this._id}}','{{this.products._id}}',-1)">
+                                            <i class='bx bx-minus fs'></i>
+                                        </button>
+
+                                        <input type="text" class="form-control form-control-sm"
+                                            id="{{this.products._id}}" value="{{this.quantity}}" />
+
+
+
+                                        <button class="btn btn-link px-2"
+                                            onclick="changeQuantity('{{this._id}}','{{this.products._id}}',1)">
+                                            <i class='bx bx-plus fs'></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                        <h6 class="mb-0"><span id="price{{this.products._id}}">{{this.subtotal}}</span>
+                                        </h6>
+                                    </div>
+                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                        <a href="/cart_delete/{{this.products._id}}"
+                                            onclick="return confirm(' are you want to remove {{this.products.brandnames.brandname}}?')"
+                                            class="text-muted"><i class='bx bxs-trash'></i></a>
+                                    </div>
+                                </div>
+                                {{/each}}
+
+                                {{/each}}
+
+
+
+
+                                <hr class="my-4">
+
+                                <div class="pt-5">
+                                    <h6 class="mb-0"><a href="/" class="text-body"><i
+                                                class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 bg-grey">
+                            <div class="p-5">
+                                <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                <hr class="my-4">
+
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h5 class="text-sm">Total Amount</h5>
+                                    <h5>{{grandTotal.total_am}}</h5>
+                                </div>
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h5 class="text-sm">Shipping Charge</h5>
+                                    <h5>{{grandTotal.ship}}</h5>
+                                </div>
+
+                                {{!-- <h5 class="text-uppercase mb-3">Shipping Charge</h5>
+
+                                <div class="mb-4 pb-2">
+                                    <h5 class="text-uppercase mb-3">Give code</h5>
+                                    <select class="select">
+                                        <option value="1">Standard-Delivery- €5.00</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                        <option value="4">Four</option>
+                                    </select>
+                                </div> --}}
+
+
+
+                                {{!-- <div class="mb-5">
+                                    <div class="form-outline">
+                                        <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                                        <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                    </div>
+                                </div> --}}
+
+                                <hr class="my-4">
+
+                                <div class="d-flex justify-content-between mb-5">
+                                    <h5 class="text-uppercase">Total price</h5>
+                                    <h5>{{grandTotal.total}}</h5>
+                                </div>
+
+                                <a href="/address"><button type="button"
+                                        class="btn btn-color btn-block btn-lg text-white"
+                                        data-mdb-ripple-color="dark">Place order</button></a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function changeQuantity(cartId, proId, count) {
+        let price = parseInt(document.getElementById('price' + proId).value)
+        let quantity = parseInt(document.getElementById(proId).value);
+        count = parseInt(count)
+        $.ajax({
+            url: '/change-product-quantity',
+            data: {
+                cart: cartId,
+                products: proId,
+                count: count,
+                quantity: quantity
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.removeProduct) {
+                    alert('product removed from cart')
+                    location.reload()
+                } else {
+                    document.getElementById(proId).value = quantity + count
+                    location.reload()
+                }
+
+            }
+        })
+    }
+</script>

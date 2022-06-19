@@ -1,0 +1,106 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 ad-product mx-auto">
+            <h3 class="text-center">Edit Products</h3>
+
+            <form action="/admin/editpro/{{products._id}}" method="post" name="form1" id="form1" enctype="multipart/form-data">
+            <div class=" mb-3">
+                <label for="exampleInputPassword1" class="form-label">Brandname</label>
+                <select name="brands" class="form-control">
+                    <option value="{{products.brandnames.brandname}}">{{products.brandnames.brandname}}
+                    </option>
+                    {{#each brands}}
+            
+                    <option value="{{this.brandname}}">{{this.brandname}}</option>
+            
+            
+                    {{/each}}
+            
+                </select>
+            </div>
+                <div class=" mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Price</label>
+                    <input type="text" class="form-control" aria-describedby="emailHelp" name="price" value="{{products.price}}">
+
+                </div>
+
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Description</label>
+                    <input type="text" class="form-control input-sm" name="description" value="{{products.description}}">
+                </div>
+                {{!-- <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Size</label>
+                    <input type="text" class="form-control" name="size" value="{{products.size}}">
+                </div> --}}
+                {{!-- <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Size</label>
+                    <select name="size" class="form-control">
+                        <option value="{{products.size}}" selected>{{products.size}}</option>
+                        <option value="S">S</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="Xl">XL</option>
+                        <option value="XXl">XXL</option>
+                        <option value="freesize">Free size</option>
+                    </select>
+                </div> --}}
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">SubCategory</label>
+                    <select name="subcategoryname" class="form-control">
+                        <option value="{{products.subcategoryname.subcategoryname}}">{{products.subcategoryname.subcategoryname}}</option>
+                        {{#each subcategorydet}}
+                        
+                        <option value="{{this.subcategoryname}}">{{this.subcategoryname}}</option>
+                        
+                       
+                        {{/each}}
+                       
+                    </select>
+                </div>
+                
+
+                
+
+                {{!-- <div class="mb-3">
+                    <label for="formFileSm" class="form-label">Image</label>
+                   
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="image" >
+                </div> --}}
+                 
+                <div class="mb-3">
+                    <label for="formFileSm" class="form-label">Image 1</label>
+                    <img style="width: 50px; height:50px" src="/images/{{products.allImages.[0].maini}}" alt="" id="imgview"  class="mb-2">
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="images"  value="{{products.allImages.[0].maini}}" onchange="viewImage(event)">
+                </div>
+                <div class="mb-3">
+                    <label for="formFileSm" class="form-label">Image 2</label>
+                    <img style="width: 50px; height:50px" src="/images/{{products.allImages.[0].nexti}}" alt="" class="mb-2">
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="image1" value="{{products.allImages.[0].nexti}}">
+                </div>
+            <div class=" mb-3">
+                <label for="exampleInputPassword1" class="form-label">Quantity</label>
+                <input type="number" class="form-control input-sm" name="quantity" value="{{products.quantity}}">
+            </div>
+
+                <div class=" d-grid gap-2  btn-width mx-auto">
+                    <button class="btn btn-color text-white btn-sm-block" type="submit">Edit product</button>
+
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function viewImage(event){
+        document.getElementById('imgview').src=URL.createObjectURL(event.target.files[0])
+      imgview.onchange=evt=>{
+
+      }
+        
+    }
+     
+</script>

@@ -1,0 +1,188 @@
+<section>
+    <div class="container">
+        <form id="checkout-form" action="/place-order" method="post">
+
+
+
+            <div class="row">
+
+                <div class="col-md-8 mb-4 mt-5">
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">Biling details</h5>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="name" id="form7Example4" class="form-control"
+                                    value="{{adddet.Address.name}}">
+                                <label class="form-label" for="form7Example4">Name</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="address" id="form7Example4" class="form-control"
+                                    value="{{adddet.Address.address}}">
+                                <label class="form-label" for="form7Example4">Address</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="place" id="form7Example4" class="form-control"
+                                    value="{{adddet.Address.Place}}">
+                                <label class="form-label" for="form7Example4">Place</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" name="state" id="form7Example4" class="form-control"
+                                    value="{{adddet.Address.state}}">
+                                <label class="form-label" for="form7Example4">State</label>
+                            </div>
+
+
+
+                            <!-- Text input -->
+                            {{!-- <div class="form-outline mb-4">
+                                <input type="text" name="address" id="form7Example4" class="form-control" />
+                                <label class="form-label" for="form7Example4">Address</label>
+                            </div> --}}
+                            <div class="form-outline mb-4">
+                                <input type="text" name="pincode" id="form7Example4" class="form-control"
+                                    value="{{adddet.Address.pincode}}">
+                                <label class="form-label" for="form7Example4">Pincode</label>
+                            </div>
+
+                            {{!--
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" name="email" id="form7Example5" class="form-control" />
+                                <label class="form-label" for="form7Example5">Email</label>
+                            </div> --}}
+
+                            <!-- Number input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" name="phone" id="form7Example6" class="form-control"
+                                    value="{{adddet.Address.mobile_no}}">
+                                <label class="form-label" for="form7Example6">Mobile</label>
+                                <input type="text" name="userId" value="{{user._id}}" hidden>
+                            </div>
+
+
+                            {{!--
+        </form> --}}
+    </div>
+    </div>
+    </div>
+
+
+    <div class="col-md-4 mb-4 mt-5">
+        <div class="card mb-4">
+            <div class="card-header py-3">
+                <h5 class="mb-0">Your Total &nbsp; &nbsp; &#x20b9 {{totalam.total}}.00</h5>
+            </div>
+            <div class="card-body">
+                {{!-- < class="list-group list-group-flush"> --}}
+                    <div class="form-check pt-3">
+                        <input class="form-check-input" type="radio" value="COD" name="payment-method"
+                            id="flexRadioDefault2" />
+                        <label class="form-check-label" for="flexRadioDefault1">Cash On Delivery</label>
+                    </div>
+
+                    <!-- Default checked radio -->
+                    <div class="form-check pt-3">
+                        <input class="form-check-input" type="radio" value="online payment" name="payment-method"
+                            id="flexRadioDefault2" checked />
+                        <label class="form-check-label" for="flexRadioDefault2">Online Payment</label>
+                    </div>
+                    <br>
+                    <hr>
+
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                        <div>
+                            <strong>Total amount</strong>
+                            {{!-- <strong>
+                                <p class="mb-0">(including VAT)</p>
+                            </strong> --}}
+                        </div>
+                        <span><strong>&#x20b9 {{totalam.total}}.00</strong></span>
+                    </li>
+                    </ul>
+                    <hr>
+                    <button style="float:right ;" type="submit" class="btn btn-color text-white btn-lg btn-block">
+                        Check Out
+                    </button>
+            </div>
+        </div>
+    </div>
+    </div>
+    </form>
+    </div>
+</section>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    $("#checkout-form").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: "/place-order",
+            method: "post",
+            data: $('#checkout-form').serialize(),
+            success: (response) => {
+                alert(response)
+                if (response.codSuccess) {
+                    location.href = '/order-confirm'
+                }
+                else {
+                    razorpayPayment(response)
+                }
+            }
+
+        })
+    })
+    function razorpayPayment(order) {
+        var options = {
+            "key": "rzp_test_SxDhXz8D2nP1A5", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Fashion Hub",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature)
+                verifyPayment(response,order)
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+
+    function verifyPayment(payment,order){
+        $.ajax({
+            url:'/verify-payment',
+            data:{
+                payment,
+                order
+            },
+            method:'post',
+            success:(response)=>{
+                if(response.status){
+                    location.href='/order-confirm'
+                }else{
+                    alert("payment failed")
+                }
+            }
+        })
+    }
+</script>

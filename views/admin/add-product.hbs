@@ -1,0 +1,85 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 ad-product mx-auto">
+            <h3 class="text-center">Add Products</h3>
+
+            <form action="/admin/add" method="post" name="form2" id="form2" enctype="multipart/form-data">
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Brandname</label>
+                    <select name="branddet" class="form-control">
+                        <option value="" selected>Select brand</option>
+                        {{#each brands}}
+
+                        <option value="{{this.brandname}}">{{this.brandname}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class=" mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Price</label>
+                    <input type="text" class="form-control" aria-describedby="emailHelp" name="price">
+
+                </div>
+
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Description</label>
+                    <input type="text" class="form-control input-sm" name="description">
+                </div>
+                {{!-- <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Size</label>
+                    <input type="text" class="form-control" name="size">
+                </div> --}}
+                {{!-- <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Size</label>
+                    <select name="size" class="form-control">
+                        <option value="">select a size</option>
+                        <option value="S">S</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="Xl">XL</option>
+                        <option value="XXl">XXL</option>
+                        <option value="freesize">Free size</option>
+                    </select>
+                </div> --}}
+                {{!-- <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Category</label>
+                    <select name="categoryname" class="form-control">
+                        {{#each categorydata}}
+                        <option value="{{this.categoryname}}">{{this.categoryname}}</option>
+                        {{/each}}
+                    </select>
+                </div> --}}
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">SubCategory</label>
+                    <select name="subcategoryname" class="form-control">
+                        <option value="" selected>Select subcategory</option>
+                        {{#each subcat}}
+
+                        <option value="{{this.subcategoryname}}">{{this.subcategoryname}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="formFileSm" class="form-label">Image</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="images">
+                </div>
+                <div class="mb-3">
+                    <label for="formFileSm" class="form-label">Image</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="image1">
+                </div>
+                <div class=" mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Quantity</label>
+                    <input type="number" class="form-control input-sm" name="quantity">
+                </div>
+
+                <div class=" d-grid gap-2  btn-width mx-auto">
+                    <button class="btn btn-color text-white btn-sm-block" type="submit">Add</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-color ">
+
+        <div class="container-fluid mx-5">
+            <a class="navbar-brand text-white" href="/">Fashion Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-white mx-2" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-white mx-2" aria-current="page" href="/aboutus">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-white mx-2" aria-current="page" href="/contact">Contact Us</a>
+                </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav ml-auto">
+
+
+                    <li class="nav-item">
+                        {{#if user}}
+                        <div class="dropdown">
+                            <a class="btn btn-color  dropdown-toggle text-white" href="#" role="button"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                
+                                <i class='bx bxs-user' style="font-size:20px;"></i>
+
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">{{user.name}}</a></li>
+                                <li><a class="dropdown-item" href="/display-order">Orders</a></li>
+                                <li><a class="dropdown-item" href="/update">Update profile</a></li>
+
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
+
+
+                            </ul>
+
+                        </div>
+
+                        {{else}} <a class="nav-link text-white " href="/login">
+
+                            
+                            <i class='bx bxs-user' style="font-size:20px;"></i>
+                        </a>
+                        {{/if}}
+
+                    </li>
+
+                    <li class="nav-item ml-2 ">
+                        <a class="nav-link text-white" href="/wishlist">
+
+                            <i class='bx bxs-heart' style="font-size:20px;"></i>
+
+
+
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item ml-2 ">
+                        <a class="nav-link text-white" href="/cart">
+
+                            <i class='bx bxs-cart' style="font-size:20px;"></i>
+
+                            <span class="badge" id="cart-count">{{cartCount}}</span>
+
+                        </a>
+                    </li>
+
+
+                </ul>
+
+                {{!-- <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> --}}
+            </div>
+
+        </div>
+    </nav>
+</header>
