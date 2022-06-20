@@ -22,36 +22,22 @@ const async = require('hbs/lib/async');
 /* GET admin home page. */
 
 
-// router.get('/',async function(req,res){
-// res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-// if(req.session.admin){
-//   let total_user=await adminHelpers.getTotalUsers()
-//   let total_order=await adminHelpers.getTotalOrders()
-//   let totalProduct=await adminHelpers.getTotalProduct()
-//   let totalorderamount=await adminHelpers.getTotalAmount()
-//   let orderdt=await adminHelpers.getOrderdt()
-//   res.render('admin/dashboard', { admin: true, total_user, total_order, totalProduct,totalorderamount,orderdt});
-// }else{
-//   res.redirect('/login')
-// }
-
-
-// })
-router.get('/', async function (req, res) {
-  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
-  if (req.session.admin) {
-    // let total_user = await adminHelpers.getTotalUsers()
-    // let total_order = await adminHelpers.getTotalOrders()
-    // let totalProduct = await adminHelpers.getTotalProduct()
-    // let totalorderamount = await adminHelpers.getTotalAmount()
-    // let orderdt = await adminHelpers.getOrderdt()
-    res.render('admin/add-category', { admin: true });
-  } else {
-    res.redirect('/login')
-  }
+router.get('/',async function(req,res){
+res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+if(req.session.admin){
+  let total_user=await adminHelpers.getTotalUsers()
+  let total_order=await adminHelpers.getTotalOrders()
+  let totalProduct=await adminHelpers.getTotalProduct()
+  let totalorderamount=await adminHelpers.getTotalAmount()
+  let orderdt=await adminHelpers.getOrderdt()
+  res.render('admin/dashboard', { admin: true, total_user, total_order, totalProduct,totalorderamount,orderdt});
+}else{
+  res.redirect('/login')
+}
 
 
 })
+
 
 // add product get method
 

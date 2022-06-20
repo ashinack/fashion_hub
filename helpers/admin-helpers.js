@@ -427,12 +427,9 @@ const getTotalAmount=()=>{
         }
         
         ])
-        
-
-       
         console.log('999999');
-        console.log(OrderTotalAmount[0].Totalamount);
-       let sum=OrderTotalAmount[0].Totalamount
+       
+        let sum = OrderTotalAmount.length ? OrderTotalAmount[0].Totalamount:0
         resolve(sum)
         
     })
