@@ -6,19 +6,10 @@ let Category=require('../models/adminSchema')
 var userHelpers=require('../helpers/user-helpers');
 var adminHelpers=require('../helpers/admin-helpers')
 const { response } = require('express');
-// const req = require('express/lib/request');
-// const { response } = require('../app');
+ const req = require('express/lib/request');
+//  const { response } = require('../app');
 
-//verfylogin
 
-// const verifyLogin=(req,res,next)=>{
-//   if(req.session.loggedIn){
-//     next()
-//   }else{
-//     res.redirect('/login');
-//   }
-
-// }
 
 const verifyLogin=(req,res,next)=>{
   if(req.session.user){
@@ -35,25 +26,7 @@ const verifyLogin=(req,res,next)=>{
 
 /* GET users listing. */
   //  home page detaila
-// router.get('/',async function(req, res, next) {
-//         userHelpers.getallProductdetails().then((userproducts)=>{
 
-//    console.log(userproducts+'//////')
-//    if(req.session.user){
-//     let user=req.session.user
-//     let cartCount=await userHelpers.getCartCount(req.session.user._id)
-
-
-//      res.render('home',{user,userproducts})
-//    }
-//    else if(req.session.admin){
-//      res.redirect('/login')
-//    }else{
-//   //  console.log(userproducts+'****')
-//    res.render('home',{userproducts});
-//    }
-// })
-// });
 
 router.get('/',async function(req, res, next) {
   let userproducts=await userHelpers.getallProductdetails()
@@ -110,22 +83,7 @@ router.post('/signup',userHelpers.doSignup)
 
 // login post method
 
-// router.post('/login',(req,res)=>{
-//   userHelpers.doLogin(req.body).then((response)=>{
-//     if(response.user){
-//       req.session.loggedIn=true
-//       req.session.user=response.user
-//       res.redirect('/')
-//     }else if(response.admin){
-//       req.session.admin=response.admin;
-//       res.redirect('/admin');
-      
-//     }else{
-//       req.session.loginErr="Invalid username or password"
-//       res.redirect('/login')
-//     }
-//   })
-// })
+
 
 router.post('/login',(req,res)=>{
   res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
@@ -278,7 +236,7 @@ router.get('/order-confirm',async(req,res)=>{
   res.render('user/order-confirm',{user})
 })
 
-
+//dispay orders
 
 router.get('/display-order',async(req,res)=>{
   let user=req.session.user

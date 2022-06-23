@@ -19,12 +19,13 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <form class="d-flex" action="/admin/search" method="post">
-                        <input class="form-control me-2" type="text" placeholder="Search" name="search_name" aria-label="Search">
+                        <input class="form-control me-2" type="text" placeholder="Search" name="search_name"
+                            aria-label="Search">
                         <button class="btn" type="submit">Search</button>
                     </form>
                     {{!-- <div class="input-group mx-4">
                         <form action="/search" method="post">
-                            <input type="search" class="form-control rounded" placeholder="Search" >
+                            <input type="search" class="form-control rounded" placeholder="Search">
                             <button type="submit" class="btn btn-color text-white">search</button>
                         </form>
                     </div> --}}
@@ -35,25 +36,25 @@
     </nav>
     <section>
 
-        <div class="container bg-image mt-3">
+        <div class="container-fluid bg-image mt-3">
         </div>
     </section>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row ">
             {{#each userproducts}}
 
-            <div class="col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center">
-                <div class="card mt-5" style="width: 14rem; height:25rem">
+            <div class="col-lg-3 col-md-12 col-12 ">
+                <div class="card mt-5" style="width: auto; height:auto">
                     <div class="container mt-2">
                         <a href="/product-details/{{this._id}}"><img src="/images/{{this.allImages.[0].maini}}"
-                                class="card-img-top " height="200" alt="..."></a>
+                                class="card-img-top " height="auto" alt="..."></a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5 class="card-title text">{{this.brandnames.brandname}}</h5>
                         <p class="card-text">Rs: {{this.price}}</p>
-                        <div style="width: 12rem; height:3rem;">
-                            <p class=" card-text des">{{this.description}}</p>
+                        <div style="width: auto; height:auto; ">
+                            <p class=" card-text des text-center">{{this.description}}</p>
                         </div>
                         <a href="/wishlist/{{this._id}}"><i class='bx bxs-bookmark-heart fs-4'></i></a>
 

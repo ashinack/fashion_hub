@@ -42,25 +42,11 @@ if(req.session.admin){
 // add product get method
 
 router.get('/add-products', async (req, res) => {
-  //  adminHelpers.getCategory().then((categorydata)=>{
-  //         // console.log(categorydata);
-
-  // })
+  
   const subcat = await adminHelpers.listALLsubcategory()
   const brands = await adminHelpers.getBrandDetails()
   res.render('admin/add-product', { admin: true, subcat, brands })
 })
-
-
-
-
-
-
-  /
-
-
-
-
 
 
   //add product post method
@@ -111,7 +97,6 @@ router.post('/add-category/', (req, res) => {
 //view category list
 router.get('/view-category', (req, res) => {
   adminHelpers.getCategory().then((categorydata) => {
-    // console.log(categorydata);
     res.render('admin/view-category', { admin: true, categorydata })
   })
 })
@@ -139,9 +124,7 @@ router.post('/edit/:id', (req, res) => {
 
 router.get('/view-product', (req, res) => {
   adminHelpers.viewProducts().then((product_detail) => {
-    // console.log(product_detail+"666666677788888");
-
-    res.render('admin/view-products', { admin: true, product_detail })
+     res.render('admin/view-products', { admin: true, product_detail })
   })
 
 })

@@ -35,21 +35,21 @@
         </div>
     </nav>
 </header>
-<div class="container">
+<div class="container-fluid">
     <div class="row ">
         {{#each userproducts}}
 
-        <div class="col-md-3 d-flex justify-content-center">
-            <div class="card mt-5" style="width: 14rem; height:22rem">
-                <div class="container mt-2">
+        <div class="col-lg-3 col-md-12 ">
+            <div class="card mt-5" style="width: auto; height:auto">
+                <div class="container-fluid mt-2">
                     <a href="/product-details/{{this._id}}"><img src="/images/{{this.allImages.[0].maini}}"
-                            class="card-img-top " height="200" alt="..."></a>
+                            class="card-img-top " height="auto" alt="..."></a>
                 </div>
-                <div class="card-body">
+                <div class="card-body text-center">
                     {{!-- <h5 class="card-title text">{{this.brandnames.brandname}}</h5> --}}
                     <p class="card-text">Rs: {{this.price}}</p>
-                    <div style="width: 12rem; height:3rem;">
-                        <p class=" card-text des">{{this.description}}</p>
+                    <div style="width: auto; height:auto; ">
+                        <p class=" card-text des text-center">{{this.description}}</p>
                     </div>
 
                     <a href="/wishlist/{{this._id}}"><i class='bx bxs-bookmark-heart fs-4'></i></a>

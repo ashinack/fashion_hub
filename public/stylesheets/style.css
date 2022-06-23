@@ -55,3 +55,7 @@ width: 100px;
   background-color:rgb(255 171 199);
   
 }
+* {
+  margin: 0;
+  padding: 0;
+}

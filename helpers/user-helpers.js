@@ -39,7 +39,7 @@ const sendVerifyMail = async (name, email, otpGenerator) => {
             secure: false,
             auth: {
                 user: 'fashionhu321@gmail.com',
-                pass: 'mrbpmmiiryczfbds'
+                pass: 'ckzlmsaghuiyiajz'
 
             },
             tls: {
@@ -54,7 +54,7 @@ const sendVerifyMail = async (name, email, otpGenerator) => {
             from: 'fashionhu321@gmail.com',
             to: email,
             subject: 'for email verification',
-            text: 'hii' + name + 'Your otp code is ' + otpGenerator
+            text: 'hii Your otp code is ' + otpGenerator
         }
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -111,7 +111,9 @@ const verifyOTP = async (req, res) => {
 
 //  user signup
 const doSignup = async (req, res) => {
+
     try {
+
         const userPassword = await securePassword((req.body.password));
 
         const user = new Register({
@@ -207,7 +209,7 @@ const sendPasswordResetMail = async (name, email, otpGenerator) => {
             secure: false,
             auth: {
                 user: "fashionhu321@gmail.com",
-                pass: "fashionhub123"
+                pass: "ckzlmsaghuiyiajz"
             },
             tls: {
                 rejectUnauthorized: false
@@ -216,7 +218,7 @@ const sendPasswordResetMail = async (name, email, otpGenerator) => {
         });
 
         const mailDetails = {
-            from: "storeladies08@gmail.com",
+            from: "fashionhu321@gmail.com",
             to: email,
             subject: "Reset Password",
             text: 'Your otp code is ' + otpGenerator
@@ -359,14 +361,14 @@ const getproductdetail = (proId) => {
 }
 
 //user profile upadte
-const updateuserdetails=(userdt, userId) => {
+const updateuserdetails = (userdt, userId) => {
     return new Promise(async (resolve) => {
         await Register.updateOne({ _id: userId }, {
             $set: {
                 name: userdt.name,
                 email: userdt.email,
                 address: userdt.address,
-                number:userdt.number 
+                number: userdt.number
             }
         }).then((response) => {
             resolve()
@@ -377,16 +379,16 @@ const updateuserdetails=(userdt, userId) => {
 //cart product add
 const addToCart = (proId, userId, dt, quantity) => {
     return new Promise(async (resolve) => {
-        let totalObj = await Products.findOne({ _id: proId});
+        let totalObj = await Products.findOne({ _id: proId });
         let perTotal = totalObj.price;
-        let qtyObj = await carModel.findOne({user:userId})
-        let userdt = await carModel.findOne({user:userId})
+        let qtyObj = await carModel.findOne({ user: userId })
+        let userdt = await carModel.findOne({ user: userId })
         var subtotal = perTotal
 
         if (userdt) {
             if (qtyObj.cartItems[0]) {
                 let qty = qtyObj.cartItems[0].quantity
-                var subtotal = perTotal*qty
+                var subtotal = perTotal * qty
             }
             let proExist = userdt.cartItems.findIndex(product => product.products == proId)
 
@@ -525,7 +527,7 @@ const changeProductQuantity = async (details) => {
     let quantity = parseInt(details.quantity)
     let product = await Products.findOne({ _id: details.products });
     let price = product.price;
-    
+
     return new Promise((resolve) => {
         if (count == -1 && quantity == 1) {
 
@@ -536,7 +538,7 @@ const changeProductQuantity = async (details) => {
 
                     resolve({ removeProduct: true })
                 })
-        } else{
+        } else {
             if (count == 1) {
                 let qty = quantity + 1;
                 let subtotal = qty * price;
@@ -650,9 +652,9 @@ const cartDelete = (proId) => {
 //add address
 const addAddress = (addaddressdetail, userId) => {
     return new Promise(async (resolve) => {
-        console.log(userId);
+
         let userinfo = await AddressModel.findOne({ user: userId })
-        console.log(userinfo);
+
         if (userinfo) {
             AddressModel.updateOne({ user: userId }, {
                 $push: {
@@ -666,7 +668,7 @@ const addAddress = (addaddressdetail, userId) => {
                     }]
                 }
             }).then((response) => {
-                
+
                 resolve()
             })
         }
@@ -802,11 +804,11 @@ const changePaymentStatus = (orderId) => {
     })
 }
 
-
+//get user orders
 const getUserOrders = (userId) => {
     return new Promise(async (resolve) => {
         let orderdt = await OrderSchema.find({ user: userId }).populate({ path: 'productdt', populate: { path: 'brandnames' } }).lean()
-        
+
         resolve(orderdt)
     })
 }
@@ -814,15 +816,16 @@ const getUserOrders = (userId) => {
 //get orderproductdetails
 const getOrderProducts = (orderId) => {
     return new Promise(async (resolve) => {
-        // const orderproDetails= await OrderSchema.find({_id:orderId}).populate('productdt').lean()
-        const orderproDetails = await OrderSchema.find({ _id: orderId }).populate({ path: 'productdt', populate: { path: 'brandnames' } }).lean()
-        //    const orderproDetails= await OrderSchema.find({_id:orderId}).populate('productdt').populate({path:'productdt',populate:{path:'Products'}}).lean()
-        resolve(orderproDetails)
        
+        const orderproDetails = await OrderSchema.find({ _id: orderId }).populate({ path: 'productdt', populate: { path: 'brandnames' } }).lean()
+       
+        resolve(orderproDetails)
+
 
     })
 
 }
+//get cart product id find
 const getCartProductList = (userId) => {
     return new Promise(async (resolve) => {
         id = mongoose.Types.ObjectId(userId)
@@ -873,18 +876,18 @@ const displaySubCat = (catId) => {
         resolve(displaysub)
     })
 }
-
+//display all category
 const displayAllCat = (catId) => {
     console.log(catId);
     return new Promise(async (resolve, reject) => {
         let displaysub = await subCategoryModel.find({ category: catId }).lean()
-       
+
         let prod = await Products.find({ subcategoryname: displaysub }).populate('brandnames').lean()
 
         resolve(prod)
     })
 }
-
+//subcategory find id
 const findOneSub = (subId) => {
     return new Promise(async (resolve, reject) => {
         let sub = await Products.find({ subcategoryname: subId }).populate('brandnames').lean()

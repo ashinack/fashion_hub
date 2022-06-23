@@ -12,7 +12,7 @@
                     
                     <th scope="col">Date</th>
                     <th scope="col">Address</th>
-                    <th scope="col">Status</th>
+                    {{!-- <th scope="col">Status</th> --}}
                     <th scope="col">Payment</th>
                     <th scope="col">Mobile</th>
                     <th scope="col">Amount</th>
@@ -34,26 +34,26 @@
                 
                 <tr>
                     
-                    <td><span style="font-size:x-small">{{this.OrderPlacedAt}}</span></td>
-                    <td><span style="font-size:x-small">{{this.address}},{{this.pincode}},{{this.Place}}</span></td>
-                    <td><span style="font-size:x-small">{{this.status}}</span></td>
-                    <td><span style="font-size:x-small">{{this.paymentMethod}}</span></td>
-                    <td><span style="font-size:x-small">{{this.mobile_no}}</span></td>
-                    <td><span style="font-size:x-small">{{this.totalAmount}}</span></td>
-                    <td><span><a href="/view-orderproducts/{{this._id}}" class="btn " style="font-size:x-small">view products
+                    <td><span style="font-size:small">{{this.OrderPlacedAt}}</span></td>
+                    <td><span style="font-size:small">{{this.address}},{{this.pincode}},{{this.Place}}</span></td>
+                    {{!-- <td><span style="font-size:x-small">{{this.status}}</span></td> --}}
+                    <td><span style="font-size:small">{{this.paymentMethod}}</span></td>
+                    <td><span style="font-size:small">{{this.mobile_no}}</span></td>
+                    <td><span style="font-size:small">{{this.totalAmount}}</span></td>
+                    <td><span style="font-size:small"><a href="/view-orderproducts/{{this._id}}" class="btn btn-color text-white">viewproducts
                             </a></span>
-                        {{#each this.productdt}}
+                        {{!-- {{#each this.productdt}}
                         <img style="width: 50px; height:50px" src="/images/{{this.allImages.[0].maini}}" alt="">
-                        {{/each}}
+                        {{/each}} --}}
                             </td>
                     
                     
-                    <td><span style="font-size:x-small">{{this.orderstatus}}</span></td>
+                    <td><span style="font-size:small">{{this.orderstatus}}</span></td>
                     {{#if cancel}}
                    
                       <td><p class="text-danger">cancelled</p></td>  
                     {{else}}  
-                    <td><span><a href="/cancel-order/{{this._id}}" class="btn btn-color " style="font-size:x-small">cancel
+                    <td><span style="font-size:small"><a href="/cancel-order/{{this._id}}" class="btn btn-color text-white">cancel
                             </a></span>
                     {{/if}}
 
